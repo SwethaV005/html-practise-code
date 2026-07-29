@@ -1,0 +1,25 @@
+<h1 id="page">
+Welcome to the Demo Page
+</h1>
+<button onclick="change()">Button</button><br>
+<body>
+    <label for="num1">Num 1</label><br>
+    <input id="num1" type="number"><br>
+    <label for="num2">Num 2</label><br>
+    <input id="num2" type="number"><br>
+    <button onclick="add()">Add</button>
+     <p id="result"> Result</p>
+</body>
+<script>
+   
+    var num1 = document.getElementById('num1');
+    var num2= document.getElementById('num2');
+    var re=document.getElementById('result')
+    function add()
+    {
+        var total=Number(num1.value)+Number(num2.value);
+        re.textContent="Result= "+total
+    }
+    
+   
+</script>

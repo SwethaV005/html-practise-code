@@ -1,0 +1,95 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+     
+    background: linear-gradient(135deg, #0f0524, #3c096c, #7b2cbf, #c77dff); 
+    color:white;
+    height:100%;
+    overflow: hidden;
+    width:100%
+    
+}
+.dashboard-container
+{
+    display:grid;
+    height:100vh;
+   
+    grid-template-rows:auto 1fr;
+    gap:1.5rem;
+    width:100%;
+    padding:1.5rem;
+}
+
+
+.summary{
+    border:2px solid white;
+    border-radius:16px;
+    padding:1rem 2rem;
+}
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.5rem;
+    min-height:0;
+}
+
+
+.card{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+
+    padding:1.5rem;
+
+    border:2px solid rgba(255,255,255,0.3);
+    border-radius:16px;
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    min-height:0;
+}
+h1
+{
+    font-size: 3.5rem;
+    font-weight: bold;
+
+    background: linear-gradient(
+        90deg,
+        #ff69b4,
+        #ffb3e6,
+        #8a2be2,
+        #ff69b4
+    );
+
+    background-size: 300% 100%;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    
+
+    color: transparent; 
+   
+
+    animation: gradientMove 4s linear infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+}
+
+.cards
+{
+    flex:2;
+}
