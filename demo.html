@@ -9,6 +9,11 @@ Welcome to the Demo Page
     <input id="num2" type="number"><br>
     <button onclick="add()">Add</button>
      <p id="result"> Result</p>
+     <input id="name" type="text">
+     <button onclick="update()">Button</button>
+     <h1 id="output"></h1>
+     <input id="data" onkeyup="type()">
+     <h2 id="out"></h2>
 </body>
 <script>
    
@@ -21,5 +26,18 @@ Welcome to the Demo Page
         re.textContent="Result= "+total
     }
     
+    var input=document.getElementById("name");
+    var output=document.getElementById("output")
+    function update()
+    {
+            output.textContent=input.value
+    }
+     var data=document.getElementsById("data")
+     var out=document.getElementById("out")
+
+    function type()
+    {
+                out.textContent=data.value
+    }
    
 </script>
