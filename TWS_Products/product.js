@@ -86,6 +86,9 @@ let productItemsData=[{
     img: "images/ptz-pro-2-gallery-1.webp"
 }]
 
+
+
+let basket=[]
 let generateproduct = () => {
     return (images.innerHTML=productItemsData.map((x)=>{
         return `<div class="product">
@@ -94,9 +97,9 @@ let generateproduct = () => {
                 <h2>${x.name}</h2>
                 <p class="price">$${x.price}</p>
                         <div class="quantity">
-                            <button class="minus">-</button>
-                            <span>0</span>
-                            <button class="plus">+</button>
+                            <button onclick="decrement(${x.id})" class="minus">-</button>
+                            <span id=${x.id}>0</span>
+                            <button onclick="increment(${x.id})" class="plus">+</button>
                         </div>
                         <button class="cart-button">Add to cart</button>
                 </div>
@@ -105,3 +108,39 @@ let generateproduct = () => {
 };
 
 generateproduct()
+
+let increment = (id) => {
+    let selectedItem= id;
+    let search=basket.find((x)=> x.id===id)
+    if(search===undefined)
+    {
+         basket.push(
+        {
+            id:id,
+            item:1,
+        }
+    )
+    }
+    else{
+        search.item+=1;
+    }
+
+    console.log(basket)
+    update(id);
+};
+let decrement = (id) => {
+     let selectedItem= id;
+    let search=basket.find((x)=> x.id===id)
+    if(search===0) return;
+   
+    else{
+        search.item-=1;
+    }
+    update(id);
+};
+let update = (id) => {
+    let search=basket.find((x)=> x.id===id)
+    console.log(search.item)
+    document.getElementById(id).innerHTML=search.item;
+
+ }   
