@@ -101,7 +101,7 @@ let generateproduct = () => {
                             <span id=${x.id}>0</span>
                             <button onclick="increment(${x.id})" class="plus">+</button>
                         </div>
-                        <button class="cart-button">Add to cart</button>
+                        <button onclick="add_to_cart(${x.id})" class="cart-button">Add to cart</button>
                 </div>
             </div>`
     }).join(" ")) 
@@ -131,7 +131,7 @@ let increment = (id) => {
 let decrement = (id) => {
      let selectedItem= id;
     let search=basket.find((x)=> x.id===id)
-    if(search===0) return;
+    if(search===undefined || search.item<=0) return;
    
     else{
         search.item-=1;
@@ -141,6 +141,29 @@ let decrement = (id) => {
 let update = (id) => {
     let search=basket.find((x)=> x.id===id)
     console.log(search.item)
+    let qty = search ? search.item : 0
     document.getElementById(id).innerHTML=search.item;
 
  }   
+
+let cart=[];
+ 
+
+ let add_to_cart = (id) => {
+    let selected = basket.find((x) => x.id === id)
+    if (!selected || selected.item <= 0) return // nothing selected, don't add
+
+    let inCart = cart.find((x) => x.id === id)
+    if (inCart === undefined) {
+        cart.push({ id: id, item: selected.item })
+    } else {
+        inCart.item += selected.item
+    }
+
+    updateCartBadge()
+}
+
+let updateCartBadge = () => {
+    let total = cart.reduce((sum, x) => sum + x.item, 0)
+    document.getElementById("cart-count").innerHTML = total
+}
