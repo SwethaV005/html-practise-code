@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7f8;
+    color: #1d2b36;
+}
+
+.hero
+{
+    min-height:650px;
+    padding:30px 7%;
+    background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+    url("images/train.jpg");
+    background-size:cover;
+    background-position:center;
+    color:white;
+}
+
+.hero h1{
+    display:inline-block;
+    font-size:32px;
+    letter-spacing:3px;
+}
+
+.hero nav{
+    float:right;
+}
+
+.hero nav ul{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    list-style: none;
+}
+
+.hero nav li{
+    font-size: 16px;
+    cursor:pointer
+
+}
+.hero nav li:hover{
+    color:#8ed8ff
+}
+
+.hero nav img{
+    width:25px;
+    height:25px;
+    object-fit:contain;
+    display:block;
+}
+.hero-content {
+    max-width: 650px;
+    padding-top: 150px;
+}
+
+.hero-content h2 {
+    font-size: 55px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 19px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+.hero-content nav:first-of-type ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin-bottom: 45px;
+}
+
+.hero-content nav:first-of-type li {
+    padding: 14px 25px;
+    border-radius: 30px;
+    background-color: white;
+    color: #1d6fa5;
+    cursor: pointer;
+}
+
+
+.hero-content nav:first-of-type li:hover {
+    background-color: #1d6fa5;
+    color: white;
+}
+
+.hero-content nav:last-of-type ul {
+    display: flex;
+    gap: 55px;
+    list-style: none;
+}
+
+.hero-content nav:last-of-type li {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hero-content strong {
+    font-size: 28px;
+}
+
+.hero-content span {
+    font-size: 14px;
+}
+
+.destinations {
+    padding: 70px 7% 40px;
+    text-align: center;
+}
+
+.destinations h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.destinations p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: #66727c;
+    line-height: 1.6;
+}
+
+
+.destination-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.destination-buttons button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background-color: white;
+    color: #1d2b36;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.destination-buttons button:hover {
+    background-color: #1d6fa5;
+    color: white;
+}
+
+.tours {
+    width: 86%;
+    margin: 20px auto 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card{
+    background-color:white;
+    border-radius: 20px;
+    overflow:hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+}
+
+.card img{
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.card img:hover{
+    transform:scale(1.08);
+}
+
+.card-content{
+    padding:25px;
+}
+
+
+.card-content h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.card-content p {
+    color: #66727c;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.card-content h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.card-content h3 span {
+    font-size: 14px;
+    font-weight: normal;
+    color: #777;
+}
+
+.card-content button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 25px;
+    background-color: #1d6fa5;
+    color: white;
+    font-size: 16px;
+}
+
+.card-content button:hover {
+    background-color: #155477;
+}
+footer {
+    padding: 25px;
+    text-align: center;
+    background-color: #1d2b36;
+    color: white;
+}
