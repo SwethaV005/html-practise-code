@@ -160,10 +160,51 @@ let cart=[];
         inCart.item += selected.item
     }
 
-    updateCartBadge()
+    updateCart()
 }
 
-let updateCartBadge = () => {
+let updateCart = () => {
     let total = cart.reduce((sum, x) => sum + x.item, 0)
     document.getElementById("cart-count").innerHTML = total
+}
+
+let searchicon=document.getElementById("searchicon")
+let searchbar=document.getElementById("searchbar")
+
+
+searchicon.addEventListener("click",function()
+{
+    searchbar.style.display="block";
+    searchbar.focus();
+})
+
+searchbar.addEventListener("input",function()
+{
+       let searchvalue=searchbar.value.toLowerCase();
+       let filterproducts=productItemsData.filter((x)=>{
+         return x.name.toLowerCase().includes(searchvalue);
+
+       });
+        
+     displayproducts(filterproducts);
+})
+
+function displayproducts(products){
+    images.innerHTML=products.map(function(x){
+        return` 
+        <div class="product">
+           <div class="card"> <img src="${x.img}" alt="${x.name}"></div>
+                <div class="product-info">
+                <h2>${x.name}</h2>
+                <p class="price">$${x.price}</p>
+                        <div class="quantity">
+                            <button onclick="decrement(${x.id})" class="minus">-</button>
+                            <span id=${x.id}>0</span>
+                            <button onclick="increment(${x.id})" class="plus">+</button>
+                        </div>
+                        <button onclick="add_to_cart(${x.id})" class="cart-button">Add to cart</button>
+                </div>
+            </div>`
+
+    }).join(" ");
 }
