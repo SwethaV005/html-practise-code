@@ -1,11 +1,10 @@
-function Hello(){
-    let text="swetha"  
-    function displayname(){
-        return 'React'
-    }  
+function Hello({name,phone}){
+    
+    
     return (
-        <h1>Hello from hello component  {10+20}  {text} {displayname()}</h1>
+        <h1>Hello {name} {phone}</h1>
     )
 }
+
 
 export default Hello

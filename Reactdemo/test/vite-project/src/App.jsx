@@ -4,7 +4,9 @@ import Bye from './components/Bye'
 function App(){
   return(
     <>
-    <Hello/>
+    <Hello name='Swetha' phone='12345'/>
+    <Hello name='Venugopal' phone='787899'/>
+     <Hello name='Adam' phone='987990'/>
     <Bye/>
     </>
   )
