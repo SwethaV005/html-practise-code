@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"  content="width=device-width" ,inital-scale="1.0">
+    </head>
+    <div id="container">
+        
+    </div>
+    <script>
+        const message=document.createElement("p");
+        message.innerHTML="Swetha";
+
+        const root=document.getElementById("container");
+        root.appendChild(message);
+    </script>
+    <script
+     crossorigin src="https://unpkg.com/react@18/umd/react.development.js">
+    </script>
+    <script 
+    crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+    </script>
+    <script>
+        const msg=React.createElement('h1',{},"Hello from react")
+        const rt=ReactDOM.createRoot(document.getElementById('container'))
+        rt.render(msg)
+    </script>
+</html>
