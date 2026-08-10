@@ -1,8 +1,8 @@
-function Hello({name,phone}){
+function Hello({name,seats,phone}){
     
     
     return (
-        <h1>Hello {name} {phone}</h1>
+        <h1>Hello {name} {phone} {seats}</h1>
     )
 }
 
