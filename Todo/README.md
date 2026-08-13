@@ -8,14 +8,14 @@ A simple To-Do List application built using React. The application allows users 
 
 - Created React components and organized the application into separate components.
 - Used `useState` to manage the input value and todo list.
-- Used controlled inputs by connecting the input `value` to state and updating it with `onChange`. :contentReference[oaicite:1]{index=1}
+- Used controlled inputs by connecting the input `value` to state and updating it with `onChange`. 
 - Learned how to pass data and functions from a parent component to child components using props.
 - Used destructuring to receive props inside components.
 - Used event handlers such as `onChange` and `onClick`.
 - Used the spread operator to add a new todo to the existing todo array.
-- Used `filter()` to remove a todo from the list based on its index. :contentReference[oaicite:2]{index=2}
+- Used `filter()` to remove a todo from the list based on its index. 
 - Created reusable components for the input section and individual todo items.
-- Passed the todo, index, and delete function to the Todo component. :contentReference[oaicite:3]{index=3}
+- Passed the todo, index, and delete function to the Todo component. 
 - Learned how state changes cause React components to update and display the latest data.
 
 ## Key Learning
