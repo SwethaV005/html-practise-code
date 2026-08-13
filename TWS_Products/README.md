@@ -7,7 +7,7 @@ A Logitech TWS products webpage created using HTML and JavaScript. The project d
 ## What I Learned
 
 - Connected JavaScript to an HTML page using the `<script>` tag with `defer`.
-- Created an array of product objects containing product IDs, names, prices, and image paths. :contentReference[oaicite:1]{index=1}
+- Created an array of product objects containing product IDs, names, prices, and image paths. {index=1}
 - Used `map()` to generate product cards dynamically instead of hardcoding every product in HTML.
 - Used template literals to insert product information into HTML.
 - Used `innerHTML` to display dynamically generated products.
