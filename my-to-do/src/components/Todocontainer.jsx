@@ -5,7 +5,7 @@ function Todocontainer({ todos, delTodo }) {
   return (
     <div className="container">
       {todos.map((todo, index) => {
-        return <Todo  todo={todo} delTodo={delTodo} index={index} />
+        return <Todo key={`${todo}-${index}`} todo={todo} delTodo={delTodo} index={index} />
       })}
     </div>
   )

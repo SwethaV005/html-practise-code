@@ -1,57 +1,66 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useCallback, useRef, useLayoutEffect } from 'react'
 import './App.css'
 import ProductCard from './components/ProductCard'
 import Header from './components/Header'
-import productsData from './Data/product.js'
+import { CartProvider, useCart } from './context/CartContext.jsx'
+import { useLifecycleLogger } from './hooks/useLifecycleLogger.js';
 
-function App() {
-  const [cart, setCart] = useState({})
-  const [quantities, setQuantities] = useState({})
-  const [searchQuery, setSearchQuery] = useState("")
+function AppContent() {
+  const {
+    cartCount,
+    visibleProducts,
+    quantities,
+    increment,
+    decrement,
+    addToCart,
+    setSearchQuery,
+  } = useCart();
 
-  const increment = (id) => {
-    setQuantities((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }))
-  }
+  const searchInputRef = useRef(null);
 
-  const decrement = (id) => {
-    setQuantities((prev) => {
-      const current = prev[id] || 0
-      if (current <= 0) return prev
-      return { ...prev, [id]: current - 1 }
-    })
-  }
+  useLifecycleLogger("App", { cartCount, visibleProducts, quantities, searchQuery: setSearchQuery });
 
-  const addToCart = (id) => {
-    const qty = quantities[id] || 0
-    if (qty <= 0) return
-    setCart((prev) => ({ ...prev, [id]: (prev[id] || 0) + qty }))
-   
-  }
+  useLayoutEffect(() => {
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, []);
 
-  const cartCount = Object.values(cart).reduce((sum, qty) => sum + qty, 0)
+  const handleSearch = useCallback((value) => {
+    setSearchQuery(value);
+  }, [setSearchQuery]);
 
-  const visibleProducts = useMemo(() => {
-    const term = searchQuery.toLowerCase()
-    return productsData.filter((p) => p.name.toLowerCase().includes(term))
-  }, [searchQuery])
+  const productCards = useMemo(
+    () => visibleProducts.map((product) => (
+      <ProductCard
+        key={product.id}
+        product={product}
+        quantity={quantities[product.id] || 0}
+        onIncrement={increment}
+        onDecrement={decrement}
+        onAddToCart={addToCart}
+      />
+    )),
+    [visibleProducts, quantities, increment, decrement, addToCart]
+  );
 
   return (
     <>
-      <Header cartCount={cartCount} onSearch={setSearchQuery} />
+      <Header cartCount={cartCount} onSearch={handleSearch} inputRef={searchInputRef} />
       <div className="images">
-        {visibleProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            quantity={quantities[product.id] || 0}
-            onIncrement={increment}
-            onDecrement={decrement}
-            onAddToCart={addToCart}
-          />
-        ))}
+        {productCards}
       </div>
     </>
   )
 }
 
+function App() {
+  return (
+    <CartProvider>
+      <AppContent />
+    </CartProvider>
+  )
+}
+
+App.whyDidYouRender = true;
 export default App

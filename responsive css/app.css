@@ -1,0 +1,26 @@
+h1 {
+    color:red;
+    font-size: 80px;
+    font-family: Georgia,'Times New Roman', Times, serif;
+}
+
+@media (max-width: 1500px) {
+    h1 {
+        color:blue;
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 1000px) {
+    h1 {
+        color:green;
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 500px) {
+    h1 {
+        color:orange;
+        font-size: 20px;
+    }
+}

@@ -2,13 +2,13 @@ import React, { useState, useMemo, useCallback, useEffect } from "react";
 import business from "../assets/business.svg";
 import search from "../assets/icons8-search.gif";
 import cart from "../assets/shopping-cart.png";
-import { useLifecycleLogger } from '../hooks/useLifecycleLogger.js';
+
 
 function Header({ cartCount, onSearch, inputRef }) {
   const [showSearch, setShowSearch] = useState(false);
   const [query, setQuery] = useState("");
 
-  useLifecycleLogger("Header", { cartCount, onSearch, showSearch, query });
+  
 
   useEffect(() => {
     if (showSearch) {

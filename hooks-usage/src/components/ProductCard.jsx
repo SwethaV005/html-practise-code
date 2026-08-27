@@ -1,8 +1,8 @@
 import React from "react";
-import { useLifecycleLogger } from '../hooks/useLifecycleLogger.js';
+
 
 function ProductCard({ product, quantity, onIncrement, onDecrement, onAddToCart }) {
-  useLifecycleLogger("ProductCard", { product, quantity, onIncrement, onDecrement, onAddToCart });
+  
 
   return (
     <div className="product-card">
