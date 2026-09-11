@@ -1,8 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-  mode: 'development', // Add or ensure this line is present
+module.exports = (env, argv) => ({
+  mode: argv.mode || 'development',
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -34,12 +35,12 @@ module.exports = {
       template: './public/index.html',
     }),
     new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-  }),
+      'process.env.NODE_ENV': JSON.stringify(argv.mode === 'production' ? 'production' : 'development'),
+    }),
   ],
   devServer: {
     historyApiFallback: true,
     port: 3000,
     open: true,
   },
-};
+});
