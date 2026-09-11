@@ -52,7 +52,6 @@ function AppContent() {
       product.name.toLowerCase().includes(term)
     );
   }, [searchQuery]);
-
   const searchInputRef = useRef(null);
 
   

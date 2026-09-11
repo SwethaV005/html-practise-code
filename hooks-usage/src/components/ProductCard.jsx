@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function ProductCard({ product, quantity, onIncrement, onDecrement, onAddToCart }) {
+const ProductCard = ({ product, quantity, onIncrement, onDecrement, onAddToCart }) => {
   
 
   return (

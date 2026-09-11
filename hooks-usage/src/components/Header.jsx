@@ -4,7 +4,7 @@ import search from "../assets/icons8-search.gif";
 import cart from "../assets/shopping-cart.png";
 
 
-function Header({ cartCount, onSearch, inputRef }) {
+const Header = ({ cartCount, onSearch, inputRef }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [query, setQuery] = useState("");
 
