@@ -1,10 +1,14 @@
-import React,{useState,useEffect} from "react";
-import { useParams} from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useParams, Link, NavLink, Outlet } from "react-router-dom";
 
 export default function HostVanDetail() {
   const { id } = useParams();
   const [currentVan, setCurrentVan] = React.useState(null);
-
+  const activestyles = {
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "#161616",
+  };
   React.useEffect(() => {
     fetch(`/api/host/vans/${id}`)
       .then((res) => res.json())
@@ -17,10 +21,14 @@ export default function HostVanDetail() {
 
   return (
     <section>
+      <Link to=".." relative="path" className="back-button">
+        &larr; <span>Back to all vans</span>
+      </Link>
       <div className="host-van-detail-layout-container">
         <div className="host-van-detail">
           <img src={currentVan.imageUrl} />
           <div className="host-van-detail-info-text">
+            ß
             <i className={`van-type van-type-${currentVan.type}`}>
               {currentVan.type}
             </i>
@@ -28,6 +36,31 @@ export default function HostVanDetail() {
             <h4>${currentVan.price}/day</h4>
           </div>
         </div>
+
+        <nav className="host-van-detail-nav">
+          <NavLink
+            to="."
+            end
+            style={({ isActive }) => (isActive ? activestyles : null)}
+          >
+            Details
+          </NavLink>
+          <NavLink
+            to="pricing"
+            end
+            style={({ isActive }) => (isActive ? activestyles : null)}
+          >
+            Pricing
+          </NavLink>
+          <NavLink
+            to="photos"
+            end
+            style={({ isActive }) => (isActive ? activestyles : null)}
+          >
+            Photos
+          </NavLink>
+        </nav>
+        <Outlet  context={{currentVan:currentVan }}/>
       </div>
     </section>
   );

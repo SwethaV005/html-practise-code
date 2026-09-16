@@ -12,9 +12,12 @@ import Review from "./pages/Host/Review";
 import HostLayout from "./components/HostLayout";
 import HostVans from "./pages/Host/HostVans";
 import HostVanDetail from "./pages/Host/HostVanDetail";
+import HostVanPricing from "./pages/Host/HostVanPricing";
+import HostVanInfo from "./pages/Host/HostVanInfo";
+import HostVanPhotos from "./pages/Host/HostVanPhotos";
 import "./pages/server";
 
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -29,9 +32,13 @@ function App() {
           <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
-            <Route path="vans" element={<HostVans />} />
-            <Route path="vans/:id" element={<HostVanDetail />} />
             <Route path="review" element={<Review />} />
+            <Route path="vans" element={<HostVans />}/>
+            <Route path="vans/:id" element={<HostVanDetail />}>
+            <Route index element={<HostVanInfo/>} />
+            <Route path="photos" element={<HostVanPhotos/>} />
+            <Route path="pricing" element={<HostVanPricing />} /> 
+            </Route>
           </Route>
         </Route>
       </Routes>
