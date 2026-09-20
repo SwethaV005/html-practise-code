@@ -15,15 +15,13 @@ import HostVanDetail from "./pages/Host/HostVanDetail";
 import HostVanPricing from "./pages/Host/HostVanPricing";
 import HostVanInfo from "./pages/Host/HostVanInfo";
 import HostVanPhotos from "./pages/Host/HostVanPhotos";
-import "./pages/server";
+import NotFound from "./pages/NotFound";
+import "./server";
 
-import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
+import { createBrowserRouter, createRoutesFromElements,RouterProvider, Routes, Route, Link, Outlet } from "react-router-dom";
+ const route=createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="/vans" element={<Van />} />
@@ -40,9 +38,14 @@ function App() {
             <Route path="pricing" element={<HostVanPricing />} /> 
             </Route>
           </Route>
+            <Route path="*" element={<NotFound/>}></Route>
         </Route>
-      </Routes>
-    </BrowserRouter>
+       
+  )
+ )
+function App() {
+  return (
+   <RouterProvider route={route}/>
   );
 }
 
