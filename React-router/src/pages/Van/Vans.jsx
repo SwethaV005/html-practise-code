@@ -1,39 +1,30 @@
-import React from "react"
-import { getVans } from "../../api"
-import { Link, useSearchParams ,useLocation} from "react-router-dom"
 
-export function loader(){
-    return <h1>vans data goes here</h1>
+import React from "react"
+import { Link, useSearchParams, useLoaderData } from "react-router-dom"
+import { getVans } from "../../api"
+
+export function loader() {
+    return getVans()
 }
+
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [vans, setVans] = React.useState([])
-    const [loading,setLoading]=React.useState(false)
+    const [error, setError] = React.useState(null)
+    const vans = useLoaderData()
 
     const typeFilter = searchParams.get("type")
-
-        React.useEffect(() => {
-        async function loadVans() {
-            setLoading(true)
-            const data = await getVans()
-            setVans(data)
-            setLoading(false)
-        }
-        
-        loadVans()
-    }, [])
 
     const displayedVans = typeFilter
         ? vans.filter(van => van.type === typeFilter)
         : vans
-    
+
     const vanElements = displayedVans.map(van => (
         <div key={van.id} className="van-tile">
-              <Link 
-                to={van.id} 
-                state={{ 
-                    search: `?${searchParams.toString()}`, 
-                    type: typeFilter 
+            <Link
+                to={van.id}
+                state={{
+                    search: `?${searchParams.toString()}`,
+                    type: typeFilter
                 }}
             >
                 <img alt={van.name} src={van.imageUrl} />
@@ -56,9 +47,11 @@ export default function Vans() {
             return prevParams
         })
     }
-    if (loading){
-        return <h1>Loading..</h1>
+    
+    if (error) {
+        return <h1>There was an error: {error.message}</h1>
     }
+
     return (
         <div className="van-list-container">
             <h1>Explore our van options</h1>
